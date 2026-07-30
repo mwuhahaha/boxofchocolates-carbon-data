@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-07-30T20:43:48Z",
+  "status": "stale",
+  "window": {
+    "start": "2026-07-29T20:43:48Z",
+    "end": "2026-07-30T20:43:48Z",
+    "step_seconds": 300
+  },
+  "freshness": {
+    "oldest_required_source_sample_at": "2026-07-30T20:43:48Z",
+    "oldest_required_source_age_seconds": 0,
+    "stale_after_seconds": 600
+  },
+  "stats": {
+    "energy_24h": {
+      "value": 0,
+      "unit": "kWh"
+    },
+    "emissions_24h": {
+      "value": 0,
+      "unit": "kgCO2e"
+    }
+  },
+  "series": {
+    "emissions_rate": {
+      "unit": "gCO2e/h",
+      "points": []
+    }
+  },
+  "methodology": {
+    "power": "Kepler CPU/platform energy plus NVIDIA DCGM GPU energy",
+    "grid_region": "US-MIDA-PJM",
+    "carbon_source": "Electricity Maps",
+    "attribution_url": "https://www.electricitymaps.com/"
+  }
+}

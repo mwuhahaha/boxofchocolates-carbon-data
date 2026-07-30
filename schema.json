@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://boxofchocolates.ai/schemas/carbon-snapshot-v1.json",
+  "title": "BoxOfChocolates.ai Carbon Snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "generated_at",
+    "status",
+    "window",
+    "freshness",
+    "stats",
+    "series",
+    "methodology"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "enum": ["fresh", "stale", "partial"]
+    },
+    "window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start", "end", "step_seconds"],
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "step_seconds": {
+          "const": 300
+        }
+      }
+    },
+    "freshness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "oldest_required_source_sample_at",
+        "oldest_required_source_age_seconds",
+        "stale_after_seconds"
+      ],
+      "properties": {
+        "oldest_required_source_sample_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "oldest_required_source_age_seconds": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "stale_after_seconds": {
+          "const": 600
+        }
+      }
+    },
+    "stats": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["energy_24h", "emissions_24h"],
+      "properties": {
+        "energy_24h": {
+          "$ref": "#/$defs/energyMeasurement"
+        },
+        "emissions_24h": {
+          "$ref": "#/$defs/emissionsMeasurement"
+        }
+      }
+    },
+    "series": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["emissions_rate"],
+      "properties": {
+        "emissions_rate": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["unit", "points"],
+          "properties": {
+            "unit": {
+              "const": "gCO2e/h"
+            },
+            "points": {
+              "type": "array",
+              "maxItems": 289,
+              "items": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "integer",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "number"
+                  }
+                ],
+                "items": false,
+                "minItems": 2,
+                "maxItems": 2
+              }
+            }
+          }
+        }
+      }
+    },
+    "methodology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "power",
+        "grid_region",
+        "carbon_source",
+        "attribution_url"
+      ],
+      "properties": {
+        "power": {
+          "const": "Kepler CPU/platform energy plus NVIDIA DCGM GPU energy"
+        },
+        "grid_region": {
+          "const": "US-MIDA-PJM"
+        },
+        "carbon_source": {
+          "const": "Electricity Maps"
+        },
+        "attribution_url": {
+          "const": "https://www.electricitymaps.com/"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "energyMeasurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "unit"],
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "const": "kWh"
+        }
+      }
+    },
+    "emissionsMeasurement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "unit"],
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "const": "kgCO2e"
+        }
+      }
+    }
+  }
+}
