@@ -25,12 +25,13 @@ namespaces, pod names, and other infrastructure identifiers.
 
 ## Method
 
-Energy measurements combine monitored Kepler CPU/platform energy with NVIDIA
-DCGM GPU energy. Estimated emissions combine measured energy with regional
+Energy values summarize monitored compute energy from the BoxOfChocolates.ai
+data center. Estimated emissions combine that energy with regional
 grid-carbon-intensity data for `US-MIDA-PJM`.
 
-These values are estimates for transparency and are not audited carbon
-accounting.
+The measurements do not represent whole-building electricity and exclude
+cooling, networking, and power-conversion losses. These values are estimates
+for transparency and are not audited carbon accounting.
 
 ## License
 

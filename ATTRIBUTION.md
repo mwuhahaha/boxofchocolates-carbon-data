@@ -9,10 +9,9 @@ Electricity Maps publishes its open datasets under the
 This repository preserves that attribution and distributes its database under
 the same license.
 
-BoxOfChocolates.ai combines the regional carbon-intensity signal with locally
-measured Kepler CPU/platform energy and NVIDIA DCGM GPU energy to calculate the
-published emissions estimates.
+BoxOfChocolates.ai combines the regional carbon-intensity signal with monitored
+compute energy from its data center to calculate the published emissions
+estimates.
 
 Electricity Maps does not sponsor or endorse BoxOfChocolates.ai. Published
 values are estimates and are not audited carbon accounting.
-

@@ -29,7 +29,7 @@
     }
   },
   "methodology": {
-    "power": "Kepler CPU/platform energy plus NVIDIA DCGM GPU energy",
+    "power": "Monitored compute energy",
     "grid_region": "US-MIDA-PJM",
     "carbon_source": "Electricity Maps",
     "attribution_url": "https://www.electricitymaps.com/"

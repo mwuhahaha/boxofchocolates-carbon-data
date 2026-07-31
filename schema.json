@@ -125,7 +125,7 @@
       ],
       "properties": {
         "power": {
-          "const": "Kepler CPU/platform energy plus NVIDIA DCGM GPU energy"
+          "const": "Monitored compute energy"
         },
         "grid_region": {
           "const": "US-MIDA-PJM"
